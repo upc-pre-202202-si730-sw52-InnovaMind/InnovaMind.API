@@ -5,7 +5,7 @@ namespace InnovaMind.API.InnovaMind.Domain.Services;
 public interface IUserService
 {
     Task<IEnumerable<User>> ListAsync();
-    Task<UserResponse> SaveAsync();
-    Task<UserResponse> UpdateUser(int id, User user);
-    Task<UserResponse> DeleteAsync();
+    Task<UserResponse> SaveAsync(User user);
+    Task<UserResponse> UpdateAsync(int id, User user);
+    Task<UserResponse> DeleteAsync(int id);
 }
