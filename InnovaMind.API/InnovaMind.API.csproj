@@ -22,7 +22,6 @@
     <Folder Include="InnovaMind\Services\" />
     <Folder Include="InnovaMind\Resources\" />
     <Folder Include="InnovaMind\Persistence\" />
-    <Folder Include="Shared\" />
     <Folder Include="Security\" />
   </ItemGroup>
 
