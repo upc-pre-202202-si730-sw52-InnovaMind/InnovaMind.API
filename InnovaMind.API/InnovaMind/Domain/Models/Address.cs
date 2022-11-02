@@ -6,6 +6,7 @@ public class Address
 
     //Relationships
     public int userId { get; set; }
+
     public User user { get; set; }
 
 }
