@@ -20,6 +20,7 @@
     <Folder Include="InnovaMind\Controllers\" />
     <Folder Include="InnovaMind\Persistence\" />
     <Folder Include="Security\" />
+    <Folder Include="Shared\Domain\Repositories\" />
   </ItemGroup>
 
 </Project>
