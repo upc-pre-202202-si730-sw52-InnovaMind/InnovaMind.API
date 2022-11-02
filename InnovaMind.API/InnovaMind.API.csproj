@@ -18,7 +18,6 @@
 
   <ItemGroup>
     <Folder Include="InnovaMind\Controllers\" />
-    <Folder Include="InnovaMind\Mapping\" />
     <Folder Include="InnovaMind\Services\" />
     <Folder Include="InnovaMind\Resources\" />
     <Folder Include="InnovaMind\Persistence\" />
