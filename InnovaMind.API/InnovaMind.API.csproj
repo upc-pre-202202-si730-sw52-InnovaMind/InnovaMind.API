@@ -18,7 +18,6 @@
 
   <ItemGroup>
     <Folder Include="InnovaMind\Controllers\" />
-    <Folder Include="InnovaMind\Persistence\" />
     <Folder Include="Security\" />
   </ItemGroup>
 
