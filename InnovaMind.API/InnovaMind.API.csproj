@@ -19,6 +19,7 @@
   <ItemGroup>
     <Folder Include="InnovaMind\Controllers\" />
     <Folder Include="Security\" />
+    <Folder Include="Shared\Persistence\Repositories\" />
   </ItemGroup>
 
 </Project>
