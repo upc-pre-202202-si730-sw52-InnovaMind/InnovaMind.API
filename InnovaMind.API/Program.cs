@@ -99,7 +99,7 @@ var app = builder.Build();
 
 // Validation for ensuring Database Objects are created
 using (var scope = app.Services.CreateScope())
-using (var context = scope.ServiceProvider.GetService<AppContext>())
+using (var context = scope.ServiceProvider.GetService<AppDbContext>())
 {
     context.Database.EnsureCreated();
 }
@@ -108,8 +108,27 @@ using (var context = scope.ServiceProvider.GetService<AppContext>())
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("v1/swagger.json", "v1");
+        options.RoutePrefix = "swagger";
+
+    });
 }
+
+// Configure CORS
+app.UseCors(x => x
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+);
+
+//Configure Error Handler Middleware
+app.UseMiddleware<ErrorHandlerMiddleware>();
+
+//Configure JWT Handling
+app.UseMiddleware<JwtMiddleware>();
+
 
 app.UseHttpsRedirection();
 
