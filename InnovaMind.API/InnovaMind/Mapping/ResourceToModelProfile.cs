@@ -6,7 +6,7 @@ public class ResourceToModelProfile : Profile
 {
     public ResourceToModelProfile()
     {
-        CreateMap<SaveUserResource, User> ();
+        CreateMap<SaveSocialNetworkResource, SocialNetwork> ();
         CreateMap<SaveAddressResource, Address> ();
     }
 }

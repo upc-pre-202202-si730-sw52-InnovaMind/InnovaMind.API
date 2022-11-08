@@ -5,8 +5,8 @@ public class SaveAddressResource
 {
     [Required]
     [MaxLength(255)]
-    public string address { get; set; }
+    public string NameAddress { get; set; }
 
     [Required]
-    public int userId { get; set; }
+    public int UserId { get; set; }
 }

@@ -10,9 +10,9 @@ public class AddressService : IAddressService
 {
     private readonly IAddressRepository _addressRepository;
     private readonly IUnitOfWork _unitOfWork;
-    private readonly IUserRepository _userRepository;
+    private readonly ISocialNetworkRepository _userRepository;
 
-    public AddressService(IAddressRepository addressRepository, IUnitOfWork unitOfWork, IUserRepository userRepository)
+    public AddressService(IAddressRepository addressRepository, IUnitOfWork unitOfWork, ISocialNetworkRepository userRepository)
     {
         _addressRepository = addressRepository;
         _unitOfWork = unitOfWork;
@@ -31,7 +31,7 @@ public class AddressService : IAddressService
 
     public async Task<AddressResponse> SaveAsync(Address address)
     {
-        var existingUser = await _userRepository.FindByIdAsync(address.userId);
+        var existingUser = await _userRepository.FindByIdAsync(address.UserId);
 
         if (existingUser == null)
             return new AddressResponse("Invalid User");
@@ -61,12 +61,12 @@ public class AddressService : IAddressService
             return new AddressResponse("Invalid Address");
         }
         //Validate UserId
-        var existingUser = await _userRepository.FindByIdAsync(address.userId);
+        var existingUser = await _userRepository.FindByIdAsync(address.UserId);
         if (existingUser == null)
             return new AddressResponse("Invalid User");
 
         //Modify Fields
-        existingAddress.address = address.address;
+        existingAddress.NameAddress = address.NameAddress;
 
         try
         {
