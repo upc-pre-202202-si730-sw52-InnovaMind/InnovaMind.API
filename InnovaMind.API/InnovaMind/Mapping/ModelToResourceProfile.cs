@@ -7,7 +7,7 @@ public class ModelToResourceProfile :Profile
 {
     public ModelToResourceProfile()
     {
-        CreateMap<User, UserResource>();
+        CreateMap<SocialNetwork, SocialNetworkResource>();
         CreateMap<Address, AddressResource>();
     }
 }
