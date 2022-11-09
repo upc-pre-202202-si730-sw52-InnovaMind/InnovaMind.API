@@ -51,7 +51,7 @@ public class UsersController : ControllerBase
     public async Task<IActionResult> GetById (int id)
     {
       var user = await _userService.GetByIdAsync(id);
-      var resource = _mapper.Map<UserResource>(user);
+      var resource = _mapper.Map<User, UserResource>(user);
         return Ok(resource);
     }
 

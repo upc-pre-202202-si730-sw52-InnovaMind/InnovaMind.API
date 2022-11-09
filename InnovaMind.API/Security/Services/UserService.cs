@@ -29,9 +29,9 @@ public class UserService : IUserService
 
     public async Task<AuthenticateResponse> Authenticate(AuthenticateRequest request)
     {
-        var user = await _userRepository.FindByUsernameAsync(request.UserName);
-        Console.WriteLine($"Request: {request.UserName}, {request.Password}");
-        Console.WriteLine($"User: {user.Id}, {user.FirstName}, {user.LastName}, {user.UserName}, {user.PasswordHash}");
+        var user = await _userRepository.FindByUsernameAsync(request.Username);
+        Console.WriteLine($"Request: {request.Username}, {request.Password}");
+        Console.WriteLine($"User: {user.Id}, {user.FirstName}, {user.LastName}, {user.Username}, {user.PasswordHash}");
 
         //Validate
         if (user == null || !BCryptNet.Verify(request.Password, user.PasswordHash))
