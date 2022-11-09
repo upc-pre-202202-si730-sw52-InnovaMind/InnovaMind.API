@@ -8,5 +8,6 @@ public class ResourceToModelProfile : Profile
     {
         CreateMap<SaveSocialNetworkResource, SocialNetwork> ();
         CreateMap<SaveAddressResource, Address> ();
+        CreateMap<SaveMessageResource, Message> ();
     }
 }

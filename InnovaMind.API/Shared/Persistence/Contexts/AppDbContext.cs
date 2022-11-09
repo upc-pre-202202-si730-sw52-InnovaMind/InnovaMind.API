@@ -12,6 +12,7 @@ public class AppDbContext : DbContext
     public DbSet<Address> Address { get; set; }
 
     public DbSet<User> Users { get; set; }
+    public DbSet<Message> Messages { get; set; }
 
     public AppDbContext(DbContextOptions options) : base (options)
     {
@@ -56,7 +57,24 @@ public class AppDbContext : DbContext
         builder.Entity<User>().Property(p => p.Role).IsRequired().HasMaxLength(10);
         builder.Entity<User>().Property(p => p.Phone).IsRequired();
         builder.Entity<User>().Property(p => p.Description).IsRequired();
-       
+
+
+        //Messages
+        builder.Entity<Message>().ToTable("Messages");
+        builder.Entity<Message>().HasKey(p => p.Id);
+        builder.Entity<Message>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Message>().Property(p => p.Content).IsRequired();
+        //Relations
+        builder.Entity<Message>()
+            .HasOne(p => p.Emitter)
+            .WithMany(p => p.ReceivedMessages)
+            .HasForeignKey(p => p.EmitterId);
+
+        builder.Entity<Message>()
+            .HasOne(p => p.Receiver)
+            .WithMany(p => p.EmittedMessages)
+            .HasForeignKey(p => p.ReceiverId);
+
         //Apply Snake Case Naming Convention
         builder.UseSnakeCaseNamingConvention();
 

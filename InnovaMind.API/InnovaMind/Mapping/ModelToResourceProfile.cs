@@ -9,5 +9,6 @@ public class ModelToResourceProfile :Profile
     {
         CreateMap<SocialNetwork, SocialNetworkResource>();
         CreateMap<Address, AddressResource>();
+        CreateMap<Message, MessageResource>();
     }
 }
