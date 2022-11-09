@@ -4,9 +4,11 @@ namespace InnovaMind.API.InnovaMind.Resources;
 public class SaveAddressResource
 {
     [Required]
-    [MaxLength(255)]
+    public int UserId { get; set; }
+    
+    [Required]
+    [MaxLength(500)]
     public string NameAddress { get; set; }
 
-    [Required]
-    public int UserId { get; set; }
+    
 }

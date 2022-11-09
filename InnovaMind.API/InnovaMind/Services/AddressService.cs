@@ -2,6 +2,7 @@
 using InnovaMind.API.InnovaMind.Domain.Repositories;
 using InnovaMind.API.InnovaMind.Domain.Services;
 using InnovaMind.API.InnovaMind.Domain.Services.Communication;
+using InnovaMind.API.Security.Domain.Repositories;
 using InnovaMind.API.Shared.Domain.Repositories;
 
 namespace InnovaMind.API.InnovaMind.Services;
@@ -10,9 +11,9 @@ public class AddressService : IAddressService
 {
     private readonly IAddressRepository _addressRepository;
     private readonly IUnitOfWork _unitOfWork;
-    private readonly ISocialNetworkRepository _userRepository;
+    private readonly IUserRepository _userRepository;
 
-    public AddressService(IAddressRepository addressRepository, IUnitOfWork unitOfWork, ISocialNetworkRepository userRepository)
+    public AddressService(IAddressRepository addressRepository, IUnitOfWork unitOfWork, IUserRepository userRepository)
     {
         _addressRepository = addressRepository;
         _unitOfWork = unitOfWork;

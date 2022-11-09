@@ -1,4 +1,6 @@
 ﻿using InnovaMind.API.Security.Domain.Models;
+using System.Text.Json.Serialization;
+
 namespace InnovaMind.API.InnovaMind.Domain.Models;
 public class SocialNetwork
 {

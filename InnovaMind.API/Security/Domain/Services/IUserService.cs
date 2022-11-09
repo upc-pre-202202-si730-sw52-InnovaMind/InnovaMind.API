@@ -1,4 +1,5 @@
-﻿using InnovaMind.API.Security.Domain.Models;
+﻿
+using InnovaMind.API.Security.Domain.Models;
 using InnovaMind.API.InnovaMind.Domain.Services.Communication;
 using InnovaMind.API.Security.Domain.Services.Communication;
 
