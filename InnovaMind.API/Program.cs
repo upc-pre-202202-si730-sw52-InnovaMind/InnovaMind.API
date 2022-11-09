@@ -14,6 +14,7 @@ using InnovaMind.API.Shared.Domain.Repositories;
 using InnovaMind.API.Shared.Persistence.Contexts;
 using InnovaMind.API.Shared.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 
 
@@ -27,6 +28,9 @@ builder.Services.AddControllers();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
+//AppSettings Configuration
+builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 
 builder.Services.AddSwaggerGen(options =>
 {
@@ -50,7 +54,26 @@ builder.Services.AddSwaggerGen(options =>
         }
     });
     options.EnableAnnotations();
+    options.AddSecurityDefinition("bearearAuth", new OpenApiSecurityScheme
+    {
+        Type = SecuritySchemeType.Http,
+        Scheme = "bearer",
+        BearerFormat = "JWT",
+        Description = "JWT Authorization header using the Bearer Scheme"
+    });
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "bearearAuth"}
+            },
+            Array.Empty<string>()
+        }
+    });
 });
+
+
 
 // Add Database Connection
 
@@ -72,8 +95,7 @@ builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-//AppSettings Configuration
-builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
+
 
 // InnovaMind Injection Configuration
 builder.Services.AddScoped<IAddressRepository, AddressRepository>();
@@ -112,7 +134,8 @@ if (app.Environment.IsDevelopment())
     {
         options.SwaggerEndpoint("v1/swagger.json", "v1");
         options.RoutePrefix = "swagger";
-
+        //Added To View the tags in swagger
+        options.DisplayOperationId();
     });
 }
 
@@ -137,3 +160,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+public partial class Program { }

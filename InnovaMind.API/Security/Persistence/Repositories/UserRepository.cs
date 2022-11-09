@@ -23,14 +23,14 @@ public class UserRepository : BaseRepository, IUserRepository
         await _context.Users.AddAsync(user);
     }
 
-    public async Task<User> FindByIdAsync(int id)
+    public async Task<User> FindByIdAsync(int userId)
     {
-        return await _context.Users.FindAsync(id);
+        return await _context.Users.FindAsync(userId);
     }
 
     public async Task<User> FindByUsernameAsync(string username)
     {
-        return await _context.Users.SingleOrDefaultAsync(x => x.UserName == username);
+        return await _context.Users.SingleOrDefaultAsync(x => x.Username == username);
     }
 
     public User FindById(int id)
@@ -40,7 +40,7 @@ public class UserRepository : BaseRepository, IUserRepository
 
     public bool ExistsByUsername(string username)
     {
-        return _context.Users.Any(x => x.UserName == username);
+        return _context.Users.Any(x => x.Username == username);
     }
 
     public void Update(User user)
