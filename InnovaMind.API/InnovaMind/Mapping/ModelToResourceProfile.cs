@@ -9,5 +9,10 @@ public class ModelToResourceProfile :Profile
     {
         CreateMap<SocialNetwork, SocialNetworkResource>();
         CreateMap<Address, AddressResource>();
+        CreateMap<Driver, DriverResource>();
+        CreateMap<Driverprofile, DriverprofileResource>();
+        CreateMap<License, LicenseResource>();
+        CreateMap<Education, EducationResource>();
+        CreateMap<School, SchoolResource>();
     }
 }

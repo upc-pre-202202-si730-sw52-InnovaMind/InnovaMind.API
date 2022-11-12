@@ -21,4 +21,6 @@ public class User
 
     [JsonIgnore]
     public IList<Address> Addresses { get; set; } = new List<Address>();
+    [JsonIgnore]
+    public Driver Driver { get; set; } 
 }
