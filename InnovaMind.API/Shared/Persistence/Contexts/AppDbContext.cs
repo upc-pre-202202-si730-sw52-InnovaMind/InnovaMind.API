@@ -12,6 +12,9 @@ public class AppDbContext : DbContext
     public DbSet<Address> Address { get; set; }
 
     public DbSet<User> Users { get; set; }
+    
+    public DbSet<Notification> Notifications { get; set; }
+    
 
     public AppDbContext(DbContextOptions options) : base (options)
     {
@@ -53,9 +56,22 @@ public class AppDbContext : DbContext
         builder.Entity<User>().Property(p => p.Role).IsRequired().HasMaxLength(10);
         builder.Entity<User>().Property(p => p.Phone).IsRequired();
         builder.Entity<User>().Property(p => p.Description);
+        
+        //Notifications
+        builder.Entity<Notification>().ToTable("Notifications");
+        builder.Entity<Notification>().HasKey(p => p.Id);
+        builder.Entity<Notification>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Notification>().Property(p => p.Content).IsRequired();
+        builder.Entity<Notification>().Property(p => p.Date).IsRequired();
+        builder.Entity<Notification>()
+            .HasOne(p => p.User)
+            .WithMany(p => p.Notifications)
+            .HasForeignKey(p => p.UserId);
+        
        
         //Apply Snake Case Naming Convention
         builder.UseSnakeCaseNamingConvention();
+        
 
     }
 }

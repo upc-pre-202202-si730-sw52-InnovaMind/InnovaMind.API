@@ -19,4 +19,5 @@ public class User
     public IList<SocialNetwork> SocialNetworks { get; set; } = new List<SocialNetwork>();
     
     public IList<Address> Address { get; set; } = new List<Address>();
+    public IList<Notification> Notifications { get; set; }
 }
