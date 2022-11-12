@@ -1,6 +1,9 @@
-namespace InnovaMind.API.InnovaMind.Domain.Models;
+using InnovaMind.API.InnovaMind.Domain.Models;
+using InnovaMind.API.Security.Domain.Models;
 
-public class Company
+namespace InnovaMind.API.InnovaMind.Resources;
+
+public class SaveCompanyResource
 {
     public int Id { get; set; }
     public string Name { get; set; }

@@ -9,5 +9,8 @@ public class ModelToResourceProfile :Profile
     {
         CreateMap<SocialNetwork, SocialNetworkResource>();
         CreateMap<Address, AddressResource>();
+        CreateMap<Company, CompanyResource>();
+        CreateMap<Post, PostResource>();
+        CreateMap<Recruiter, RecruiterResource>();
     }
 }
