@@ -16,6 +16,7 @@ public class AppDbContext : DbContext
     public DbSet<Recruiter> Recruiters { get; set; }
     public DbSet<Post> Posts { get; set; }
     
+    public DbSet<Message> Messages { get; set; }
 
     public AppDbContext(DbContextOptions options) : base (options)
     {
@@ -61,39 +62,8 @@ public class AppDbContext : DbContext
         builder.Entity<User>().Property(p => p.Phone).IsRequired();
         builder.Entity<User>().Property(p => p.Description).IsRequired();
        
-        // Companies
-        builder.Entity<Company>().ToTable("Companies");
-        builder.Entity<Company>().HasKey(p => p.Id);
-        builder.Entity<Company>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd(); 
-        builder.Entity<Company>().Property(p => p.Name).IsRequired();
-        builder.Entity<Company>().Property(p => p.RUC).IsRequired().HasMaxLength(11);
-        builder.Entity<Company>().Property(p => p.Owner).IsRequired();
-        
-        // Recruiters
-        builder.Entity<Recruiter>().ToTable("Recruiters");
-        builder.Entity<Recruiter>().HasKey(p => p.Id);
-        builder.Entity<Recruiter>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-        // Relationsships
-        builder.Entity<Recruiter>()
-            .HasOne(p => p.Company)
-            .WithOne(p => p.Recruiter)
-            .HasForeignKey<Recruiter>(p => p.CompanyId);
-        
-        // Posts
-        builder.Entity<Post>().ToTable("Posts");
-        builder.Entity<Post>().HasKey(p => p.Id);
-        builder.Entity<Post>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-        builder.Entity<Post>().Property(p => p.Title).IsRequired(); 
-        builder.Entity<Post>().Property(p => p.Description).IsRequired();
-        builder.Entity<Post>().Property(p => p.date).IsRequired();
-        // Relationsships
-        builder.Entity<Post>()
-            .HasOne(p => p.Recruiter)
-            .WithMany(p => p.Posts)
-            .HasForeignKey(p => p.RecruiterId);
-
-
         //Apply Snake Case Naming Convention
         builder.UseSnakeCaseNamingConvention();
+
     }
 }

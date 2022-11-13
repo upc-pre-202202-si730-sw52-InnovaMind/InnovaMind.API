@@ -12,5 +12,6 @@ public class ModelToResourceProfile :Profile
         CreateMap<Company, CompanyResource>();
         CreateMap<Post, PostResource>();
         CreateMap<Recruiter, RecruiterResource>();
+        CreateMap<Message, MessageResource>();
     }
 }

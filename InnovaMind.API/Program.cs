@@ -102,6 +102,8 @@ builder.Services.AddScoped<IAddressRepository, AddressRepository>();
 builder.Services.AddScoped<IAddressService, AddressService>();
 builder.Services.AddScoped<ISocialNetworkRepository, SocialNetworkRepository>();
 builder.Services.AddScoped<ISocialNetworkService, SocialNetworkService>();
+builder.Services.AddScoped<IMessageRepository, MessageRepository>();
+builder.Services.AddScoped<IMessageService, MessageService>();
 // Security Injection Configuration
 
 builder.Services.AddScoped<IJwtHandler, JwtHandler>();

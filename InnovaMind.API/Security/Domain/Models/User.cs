@@ -21,4 +21,10 @@ public class User
 
     [JsonIgnore]
     public IList<Address> Addresses { get; set; } = new List<Address>();
+
+    [JsonIgnore]
+    public IList<Message> EmittedMessages { get; set; } = new List<Message>();
+
+    [JsonIgnore]
+    public IList<Message> ReceivedMessages { get; set; } = new List<Message>();
 }
