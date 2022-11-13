@@ -12,5 +12,6 @@ public class ResourceToModelProfile : Profile
         CreateMap<SaveCompanyResource, Company> (); 
         CreateMap<SaveRecruiterResource, Recruiter> ();
         CreateMap<SaveMessageResource, Message> ();
+        CreateMap<SaveNotificationResource, Notification> ();
     }
 }

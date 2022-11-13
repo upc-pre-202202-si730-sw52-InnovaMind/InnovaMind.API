@@ -17,6 +17,9 @@ public class AppDbContext : DbContext
     public DbSet<Post> Posts { get; set; }
     
     public DbSet<Message> Messages { get; set; }
+    
+    public DbSet<Notification> Notifications { get; set; }
+    
 
     public AppDbContext(DbContextOptions options) : base (options)
     {
@@ -37,7 +40,6 @@ public class AppDbContext : DbContext
             .HasOne(p => p.User)
             .WithMany(p => p.SocialNetworks)
             .HasForeignKey(p => p.UserId);
-
         //Address
         builder.Entity<Address>().ToTable("Address");
         builder.Entity<Address>().HasKey(p => p.Id);
@@ -46,21 +48,19 @@ public class AppDbContext : DbContext
         //Relationsships
         builder.Entity<Address>()
             .HasOne(p => p.User)
-            .WithMany(p => p.Addresses)
+            .WithMany(p => p.Address)
             .HasForeignKey(p => p.UserId);
-        
 
         //Users
-        //Constraints
         builder.Entity<User>().ToTable("Users");
         builder.Entity<User>().HasKey(p => p.Id);
         builder.Entity<User>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-        builder.Entity<User>().Property(p => p.Username).IsRequired();
+        builder.Entity<User>().Property(p => p.UserName).IsRequired();
         builder.Entity<User>().Property(p => p.FirstName).IsRequired();
         builder.Entity<User>().Property(p => p.LastName).IsRequired();
         builder.Entity<User>().Property(p => p.Role).IsRequired().HasMaxLength(10);
         builder.Entity<User>().Property(p => p.Phone).IsRequired();
-        builder.Entity<User>().Property(p => p.Description).IsRequired();
+        builder.Entity<User>().Property(p => p.Description);
        
         //Apply Snake Case Naming Convention
         builder.UseSnakeCaseNamingConvention();

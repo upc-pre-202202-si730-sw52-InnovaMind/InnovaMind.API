@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using InnovaMind.API.InnovaMind.Domain.Models;
 using InnovaMind.API.InnovaMind.Resources;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 
 namespace InnovaMind.API.InnovaMind.Mapping;
 public class ModelToResourceProfile :Profile
@@ -13,5 +14,6 @@ public class ModelToResourceProfile :Profile
         CreateMap<Post, PostResource>();
         CreateMap<Recruiter, RecruiterResource>();
         CreateMap<Message, MessageResource>();
+        CreateMap<Notification, NotificationResource>();
     }
 }
