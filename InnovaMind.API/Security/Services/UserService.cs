@@ -31,7 +31,7 @@ public class UserService : IUserService
     {
         var user = await _userRepository.FindByUsernameAsync(request.Username);
         Console.WriteLine($"Request: {request.Username}, {request.Password}");
-        Console.WriteLine($"User: {user.Id}, {user.FirstName}, {user.LastName}, {user.Username}, {user.PasswordHash}");
+        Console.WriteLine($"User: {user.Id}, {user.FirstName}, {user.LastName}, {user.UserName}, {user.PasswordHash}");
 
         //Validate
         if (user == null || !BCryptNet.Verify(request.Password, user.PasswordHash))

@@ -126,7 +126,65 @@ public class AppDbContext : DbContext
         builder.Entity<User>().Property(p => p.Role).IsRequired().HasMaxLength(10);
         builder.Entity<User>().Property(p => p.Phone).IsRequired();
         builder.Entity<User>().Property(p => p.Description);
-       
+        
+        //Messages
+        builder.Entity<Message>().ToTable("Messages");
+        builder.Entity<Message>().HasKey(p => p.Id);
+        builder.Entity<Message>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Message>().Property(p => p.Content).IsRequired();
+        //Relations
+        builder.Entity<Message>()
+            .HasOne(p => p.Emitter)
+            .WithMany(p => p.ReceivedMessages)
+            .HasForeignKey(p => p.EmitterId);
+
+        builder.Entity<Message>()
+            .HasOne(p => p.Receiver)
+            .WithMany(p => p.EmittedMessages)
+            .HasForeignKey(p => p.ReceiverId); 
+        
+        // Companies
+        builder.Entity<Company>().ToTable("Companies");
+        builder.Entity<Company>().HasKey(p => p.Id);
+        builder.Entity<Company>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd(); 
+        builder.Entity<Company>().Property(p => p.Name).IsRequired();
+        builder.Entity<Company>().Property(p => p.RUC).IsRequired().HasMaxLength(11);
+        builder.Entity<Company>().Property(p => p.Owner).IsRequired();
+        
+        // Recruiters
+        builder.Entity<Recruiter>().ToTable("Recruiters");
+        builder.Entity<Recruiter>().HasKey(p => p.Id);
+        builder.Entity<Recruiter>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        // Relationsships
+        builder.Entity<Recruiter>()
+            .HasOne(p => p.Company)
+            .WithOne(p => p.Recruiter)
+            .HasForeignKey<Recruiter>(p => p.CompanyId);
+        
+        // Posts
+        builder.Entity<Post>().ToTable("Posts");
+        builder.Entity<Post>().HasKey(p => p.Id);
+        builder.Entity<Post>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Post>().Property(p => p.Title).IsRequired(); 
+        builder.Entity<Post>().Property(p => p.Description).IsRequired();
+        builder.Entity<Post>().Property(p => p.date).IsRequired();
+        // Relationsships
+        builder.Entity<Post>()
+            .HasOne(p => p.Recruiter)
+            .WithMany(p => p.Posts)
+            .HasForeignKey(p => p.RecruiterId);
+        
+        //Notifications
+        builder.Entity<Notification>().ToTable("Notifications");
+        builder.Entity<Notification>().HasKey(p => p.Id);
+        builder.Entity<Notification>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Notification>().Property(p => p.Content).IsRequired();
+        builder.Entity<Notification>().Property(p => p.Date).IsRequired();
+        builder.Entity<Notification>()
+            .HasOne(p => p.User)
+            .WithMany(p => p.Notifications)
+            .HasForeignKey(p => p.UserId);
+        
         //Apply Snake Case Naming Convention
         builder.UseSnakeCaseNamingConvention();
 
