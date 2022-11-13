@@ -13,5 +13,10 @@ public class ResourceToModelProfile : Profile
         CreateMap<SaveRecruiterResource, Recruiter> ();
         CreateMap<SaveMessageResource, Message> ();
         CreateMap<SaveNotificationResource, Notification> ();
+        CreateMap<SaveDriverResource, Driver> ();
+        CreateMap<SaveDriverprofileResource, Driverprofile> ();
+        CreateMap<SaveEducationResource, Education> ();
+        CreateMap<SaveLicenseResource, License> ();
+        CreateMap<SaveSchoolResource, School> ();
     }
 }

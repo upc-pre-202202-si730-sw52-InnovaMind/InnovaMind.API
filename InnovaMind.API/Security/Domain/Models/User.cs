@@ -7,12 +7,11 @@ public class User
     public int Id { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
-    public string UserName { get; set; }
+    public string Username { get; set; }
+    public string Password { get; set; }
     public string Phone { get; set; }
     public string Role { get; set; }
     public string Description { get; set; }
-
-    
 
     [JsonIgnore]
     public string PasswordHash { get; set; }
@@ -31,4 +30,6 @@ public class User
     
     public IList<Address> Address { get; set; } = new List<Address>();
     public IList<Notification> Notifications { get; set; }
+    [JsonIgnore]
+    public Driver Driver { get; set; } 
 }
