@@ -7,7 +7,7 @@ public class User
     public int Id { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
-    public string Username { get; set; }
+    public string UserName { get; set; }
     public string Password { get; set; }
     public string Phone { get; set; }
     public string Role { get; set; }
@@ -21,4 +21,15 @@ public class User
 
     [JsonIgnore]
     public IList<Address> Addresses { get; set; } = new List<Address>();
+
+    [JsonIgnore]
+    public IList<Message> EmittedMessages { get; set; } = new List<Message>();
+
+    [JsonIgnore]
+    public IList<Message> ReceivedMessages { get; set; } = new List<Message>();
+    
+    public IList<Address> Address { get; set; } = new List<Address>();
+    public IList<Notification> Notifications { get; set; }
+    [JsonIgnore]
+    public Driver Driver { get; set; } 
 }
