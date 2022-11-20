@@ -43,6 +43,7 @@ public class SchoolService : ISchoolService
             return new SchoolResponse("Social Network not found");
         existingSchool.name_school = School.name_school;
         existingSchool.type = School.type;
+        existingSchool.EducationId = School.EducationId;
         
         try
         {

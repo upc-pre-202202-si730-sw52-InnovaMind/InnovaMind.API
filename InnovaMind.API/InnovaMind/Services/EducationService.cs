@@ -42,7 +42,7 @@ public class EducationService : IEducationService
         if (existingEducation == null)
             return new EducationResponse("Education not found");
         existingEducation.Grade_education = Education.Grade_education;
-
+        existingEducation.DriverprofileId = Education.DriverprofileId;
         try
         {
             _EducationRepository.Update(existingEducation);

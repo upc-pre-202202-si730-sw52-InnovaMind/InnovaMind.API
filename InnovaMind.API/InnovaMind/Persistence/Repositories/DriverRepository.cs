@@ -31,6 +31,10 @@ public class DriverRepository : BaseRepository, IDriverRepository
             .Include(p => p.User)
             .FirstOrDefaultAsync(p => p.Id == DriverId);
     }
+    public Driver FindById(int id)
+    {
+        return _context.Drivers.Find(id);
+    }
     
     public void Update(Driver Driver)
     {

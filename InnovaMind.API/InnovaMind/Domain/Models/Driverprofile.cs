@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace InnovaMind.API.InnovaMind.Domain.Models;
 public class Driverprofile
 {
@@ -10,5 +12,6 @@ public class Driverprofile
 
     public int LicenseId { get; set; }
     public License License { get; set; }
+    [JsonIgnore]
     public Education Education { get; set; }
 }
