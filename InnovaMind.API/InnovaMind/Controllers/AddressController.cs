@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace InnovaMind.API.InnovaMind.Controllers;
 
+[ApiController]
 [Route("/api/v1/[controller]")]
 
 public class AddressController : ControllerBase
@@ -16,12 +17,14 @@ public class AddressController : ControllerBase
 
     public AddressController(IAddressService addressService, IMapper mapper)
     {
+        
         _addressService = addressService;
         _mapper = mapper;
     }
     [HttpGet]
     public async Task<IEnumerable<AddressResource>> GetAllAsync()
     {
+        
         var address = await _addressService.ListAsync();
         var resources = _mapper.Map<IEnumerable<Address>, IEnumerable<AddressResource>>(address);
 

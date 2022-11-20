@@ -3,8 +3,7 @@ using System.ComponentModel.DataAnnotations;
 namespace InnovaMind.API.InnovaMind.Resources;
 public class SaveLicenseResource
 {
-    [Required]
-    public int Id { get; set; }
+
 
     [Required]
     [MaxLength(50)]

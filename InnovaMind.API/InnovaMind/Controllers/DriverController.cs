@@ -8,8 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace InnovaMind.API.InnovaMind.Controllers;
 
 [ApiController]
-[Route("/api/v1/[Controller]")]
-public class DriverController : ControllerBase
+[Route("/api/v1/[controller]")]
+public class DriverController : Controller
 {
     private readonly IDriverService _DriverService;
     private readonly IMapper _mapper;
@@ -23,9 +23,17 @@ public class DriverController : ControllerBase
     [HttpGet]
     public async Task<IEnumerable<DriverResource>> GetAllAsync()
     {
+        Console.WriteLine("CONTROLLERDRI");
         var Drivers = await _DriverService.ListAsync();
         var resources = _mapper.Map<IEnumerable<Driver>, IEnumerable<DriverResource>>(Drivers);
         return resources;
+    }
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById (int id)
+    {
+        var user = await _DriverService.GetByIdAsync(id);
+        var resource = _mapper.Map<Driver, DriverResource>(user);
+        return Ok(resource);
     }
 
     [HttpPost]

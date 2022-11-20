@@ -2,6 +2,7 @@ using InnovaMind.API.InnovaMind.Domain.Models;
 using InnovaMind.API.InnovaMind.Domain.Repositories;
 using InnovaMind.API.InnovaMind.Domain.Services;
 using InnovaMind.API.InnovaMind.Domain.Services.Communication;
+using InnovaMind.API.Security.Domain.Repositories;
 using InnovaMind.API.Shared.Domain.Repositories;
 
 namespace InnovaMind.API.InnovaMind.Services;
@@ -19,6 +20,13 @@ public class DriverService : IDriverService
     public async Task<IEnumerable<Driver>> ListAsync()
     {
         return await _DriverRepository.ListAsync();
+    }
+
+    public async Task<Driver> GetByIdAsync(int id)
+    {
+        var driver = await _DriverRepository.FindByIdAsync(id);
+        if (driver == null) throw new KeyNotFoundException("User not found");
+        return driver;
     }
 
     public async Task<DriverResponse> SaveAsync(Driver Driver)
@@ -42,6 +50,7 @@ public class DriverService : IDriverService
         if (existingDriver == null)
             return new DriverResponse("Driver not found");
         existingDriver.UserId = Driver.UserId;
+
 
         try
         {
@@ -72,5 +81,11 @@ public class DriverService : IDriverService
         {
             return new DriverResponse($"An error ocurred while deleting the Driver: {e.Message}");
         }
+    }
+    private Driver GetById(int id)
+    {
+        var user = _DriverRepository.FindById(id);
+        if (user == null) throw new KeyNotFoundException("User not found");
+        return user;
     }
 }
