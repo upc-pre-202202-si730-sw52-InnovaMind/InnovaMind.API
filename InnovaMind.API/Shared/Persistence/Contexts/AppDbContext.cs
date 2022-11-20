@@ -158,9 +158,13 @@ public class AppDbContext : DbContext
         // Relationsships
         builder.Entity<Recruiter>()
             .HasOne(p => p.Company)
+            .WithMany(p => p.Recruiters)
+            .HasForeignKey(p => p.CompanyId);
+        builder.Entity<Recruiter>()
+            .HasOne(p => p.User)
             .WithOne(p => p.Recruiter)
-            .HasForeignKey<Recruiter>(p => p.CompanyId);
-        
+            .HasForeignKey<Recruiter>(p => p.UserId);
+
         // Posts
         builder.Entity<Post>().ToTable("Posts");
         builder.Entity<Post>().HasKey(p => p.Id);

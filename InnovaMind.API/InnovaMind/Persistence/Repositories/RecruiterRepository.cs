@@ -17,6 +17,7 @@ public class RecruiterRepository : BaseRepository, IRecruiterRepository
     {
         return await _context.Recruiters
             .Include(p => p.Company)
+            .Include(p => p.User)
             .ToListAsync();
     }
 

@@ -31,6 +31,7 @@ public class CompanyController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SaveCompanyResource resource)
     {
+        
         if (!ModelState.IsValid)
             return BadRequest(ModelState.GetErrorMessages());
         

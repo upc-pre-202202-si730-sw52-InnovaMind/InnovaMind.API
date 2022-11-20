@@ -32,4 +32,6 @@ public class User
     public IList<Notification> Notifications { get; set; }
     [JsonIgnore]
     public Driver Driver { get; set; } 
+    [JsonIgnore]
+    public Recruiter Recruiter { get; set; }
 }

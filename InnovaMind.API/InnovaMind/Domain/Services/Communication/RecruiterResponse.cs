@@ -5,11 +5,11 @@ namespace InnovaMind.API.InnovaMind.Domain.Services.Communication;
 
 public class RecruiterResponse : BaseResponse<Recruiter>
 {
-    protected RecruiterResponse(string message) : base(message)
+    public RecruiterResponse(string message) : base(message)
     {
     }
 
-    protected RecruiterResponse(Recruiter resource) : base(resource)
+    public RecruiterResponse(Recruiter resource) : base(resource)
     {
     }
 }

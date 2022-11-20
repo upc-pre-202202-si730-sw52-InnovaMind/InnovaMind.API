@@ -1,3 +1,4 @@
+using InnovaMind.API.InnovaMind.Domain.Models;
 using InnovaMind.API.InnovaMind.Domain.Repositories;
 using InnovaMind.API.InnovaMind.Domain.Services;
 using InnovaMind.API.InnovaMind.Persistence.Repositories;
@@ -114,6 +115,12 @@ builder.Services.AddScoped<ISchoolRepository, SchoolRepository>();
 builder.Services.AddScoped<ISchoolService, SchoolService>();
 builder.Services.AddScoped<IMessageRepository, MessageRepository>();
 builder.Services.AddScoped<IMessageService, MessageService>();
+builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
+builder.Services.AddScoped<ICompanyService, CompanyService>();
+builder.Services.AddScoped<IPostRepository, PostRepository>();
+builder.Services.AddScoped<IPostService, PostService>();
+builder.Services.AddScoped<IRecruiterRepository, RecruiterRepository>();
+builder.Services.AddScoped<IRecruiterService, RecruiterService>();
 // Security Injection Configuration
 
 builder.Services.AddScoped<IJwtHandler, JwtHandler>();
