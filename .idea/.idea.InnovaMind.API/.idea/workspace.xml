@@ -5,19 +5,8 @@
     <projectFile profileName="InnovaMind.API">InnovaMind.API/InnovaMind.API.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2edf81fb-5229-42eb-b337-f85d15ac5004" name="Changes" comment="">
+    <list default="true" id="2edf81fb-5229-42eb-b337-f85d15ac5004" name="Changes" comment="feat(Services): Services required for apply for job">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InnovaMind.API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InnovaMind.API/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InnovaMind.API/InnovaMind/Controllers/CompanyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InnovaMind.API/InnovaMind/Controllers/CompanyController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InnovaMind.API/InnovaMind/Domain/Models/Company.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InnovaMind.API/InnovaMind/Domain/Models/Company.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InnovaMind.API/InnovaMind/Domain/Models/Post.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InnovaMind.API/InnovaMind/Domain/Models/Post.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InnovaMind.API/InnovaMind/Domain/Models/Recruiter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InnovaMind.API/InnovaMind/Domain/Models/Recruiter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InnovaMind.API/InnovaMind/Domain/Services/Communication/RecruiterResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InnovaMind.API/InnovaMind/Domain/Services/Communication/RecruiterResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InnovaMind.API/InnovaMind/Resources/SaveCompanyResource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InnovaMind.API/InnovaMind/Resources/SaveCompanyResource.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InnovaMind.API/InnovaMind/Services/PostService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InnovaMind.API/InnovaMind/Services/PostService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InnovaMind.API/InnovaMind/Services/RecruiterService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InnovaMind.API/InnovaMind/Services/RecruiterService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InnovaMind.API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InnovaMind.API/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InnovaMind.API/Security/Domain/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InnovaMind.API/Security/Domain/Models/User.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InnovaMind.API/Shared/Persistence/Contexts/AppDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InnovaMind.API/Shared/Persistence/Contexts/AppDbContext.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,6 +96,14 @@
       <workItem from="1668911971053" duration="96000" />
       <workItem from="1668952810847" duration="10530000" />
     </task>
+    <task id="LOCAL-00001" summary="feat(Services): Services required for apply for job">
+      <created>1668969783779</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1668969783779</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,5 +136,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="feat(Services): Services required for apply for job" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(Services): Services required for apply for job" />
   </component>
 </project>
