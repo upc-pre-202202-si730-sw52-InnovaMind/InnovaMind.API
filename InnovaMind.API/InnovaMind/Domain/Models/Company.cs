@@ -8,6 +8,7 @@ public class Company
     public string Name { get; set; }
     public string RUC { get; set; }
     public string Owner { get; set; }
+    public string Image_url { get; set; }
     [JsonIgnore]
     public IList<Recruiter> Recruiters { get; set; }
 }

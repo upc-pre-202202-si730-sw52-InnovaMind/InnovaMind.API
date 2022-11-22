@@ -151,6 +151,7 @@ public class AppDbContext : DbContext
         builder.Entity<Company>().Property(p => p.Name).IsRequired();
         builder.Entity<Company>().Property(p => p.RUC).IsRequired().HasMaxLength(11);
         builder.Entity<Company>().Property(p => p.Owner).IsRequired();
+        builder.Entity<Company>().Property(p => p.Image_url).IsRequired();
         
         // Recruiters
         builder.Entity<Recruiter>().ToTable("Recruiters");
