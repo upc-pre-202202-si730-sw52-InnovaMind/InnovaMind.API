@@ -31,7 +31,10 @@ public class EducationRepository : BaseRepository, IEducationRepository
             .Include(p => p.Driverprofile)
             .FirstOrDefaultAsync(p => p.Id == EducationId);
     }
-    
+    public async Task<Education> FindByDriverprofileIdAsync(int driverprofileid)
+    {
+        return await _context.Educations.SingleOrDefaultAsync(x => x.DriverprofileId == driverprofileid);
+    }
     public void Update(Education Education)
     {
         _context.Educations.Update(Education);

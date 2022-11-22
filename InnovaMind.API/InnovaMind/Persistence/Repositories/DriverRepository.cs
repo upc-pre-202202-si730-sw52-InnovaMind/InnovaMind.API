@@ -19,6 +19,10 @@ public class DriverRepository : BaseRepository, IDriverRepository
             .Include(p => p.User)
             .ToListAsync();
     }
+    public async Task<Driver> FindByUserIdAsync(int userid)
+    {
+        return await _context.Drivers.SingleOrDefaultAsync(x => x.UserId == userid);
+    }
 
     public async Task AddAsync(Driver driver)
     {

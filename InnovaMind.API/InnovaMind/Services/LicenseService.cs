@@ -34,6 +34,12 @@ public class LicenseService : ILicenseService
             return new LicenseResponse($"An error ocurred while saving the social Network: {e.Message}");
         }
     }
+    public async Task<License> GetByIdAsync(int id)
+    {
+        var license = await _LicenseRepository.FindByIdAsync(id);
+        if (license == null) throw new KeyNotFoundException("license not found");
+        return license;
+    }
 
     public async Task<LicenseResponse> UpdateAsync(int id, License License)
     {

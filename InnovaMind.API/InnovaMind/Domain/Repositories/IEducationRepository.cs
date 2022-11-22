@@ -8,4 +8,5 @@ public interface IEducationRepository
     Task<Education> FindByIdAsync(int id);
     void Update(Education education);
     void Remove(Education education);
+    Task<Education> FindByDriverprofileIdAsync(int DriverprofileId);
 }

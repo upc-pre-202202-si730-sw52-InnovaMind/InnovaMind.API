@@ -8,4 +8,5 @@ public interface IDriverprofileRepository
     Task<Driverprofile> FindByIdAsync(int id);
     void Update(Driverprofile driverprofile);
     void Remove(Driverprofile driverprofile);
+    Task<Driverprofile> FindByDriverIdAsync(int DriverId);
 }

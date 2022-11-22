@@ -9,4 +9,5 @@ public interface IDriverRepository
     Driver FindById(int id);
     void Update(Driver driver);
     void Remove(Driver driver);
+    Task<Driver> FindByUserIdAsync(int UserId);
 }

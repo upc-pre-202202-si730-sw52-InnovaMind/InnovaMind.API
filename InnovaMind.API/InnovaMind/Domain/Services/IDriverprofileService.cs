@@ -9,4 +9,5 @@ public interface IDriverprofileService
     Task<DriverprofileResponse> SaveAsync(Driverprofile Driverprofile);
     Task<DriverprofileResponse> UpdateAsync(int userId, Driverprofile Driverprofile);
     Task<DriverprofileResponse> DeleteAsync(int userId);
+    Task<Driverprofile> GetByDriveridAsync(int driverid);
 }

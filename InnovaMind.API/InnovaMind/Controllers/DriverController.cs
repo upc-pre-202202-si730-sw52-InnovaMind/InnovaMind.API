@@ -35,6 +35,13 @@ public class DriverController : Controller
         var resource = _mapper.Map<Driver, DriverResource>(user);
         return Ok(resource);
     }
+    
+    [HttpGet("userid/{userid}")]
+    public async Task<IActionResult> GetByUserid(int userid)
+    {
+        var response = await _DriverService.GetByUseridAsync(userid);
+        return Ok(response);
+    }
 
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SaveDriverResource resource)

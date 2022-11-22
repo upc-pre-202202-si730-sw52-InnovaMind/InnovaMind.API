@@ -25,7 +25,17 @@ public class DriverService : IDriverService
     public async Task<Driver> GetByIdAsync(int id)
     {
         var driver = await _DriverRepository.FindByIdAsync(id);
-        if (driver == null) throw new KeyNotFoundException("User not found");
+        if (driver == null) throw new KeyNotFoundException("Driver not found");
+        return driver;
+    }
+    public async Task<Driver> GetByUseridAsync(int userid)
+    {
+        var driver = await _DriverRepository.FindByUserIdAsync(userid);
+        //Validate
+        if (driver == null )
+        {
+            throw new KeyNotFoundException("Driver not found");
+        }
         return driver;
     }
 

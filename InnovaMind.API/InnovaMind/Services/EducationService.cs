@@ -34,6 +34,16 @@ public class EducationService : IEducationService
             return new EducationResponse($"An error ocurred while saving the social Network: {e.Message}");
         }
     }
+    public async Task<Education> GetByDriverprofileidAsync(int driverprofileid)
+    {
+        var education = await _EducationRepository.FindByDriverprofileIdAsync(driverprofileid);
+        //Validate
+        if (education == null )
+        {
+            throw new KeyNotFoundException("Driver not found");
+        }
+        return education;
+    }
 
     public async Task<EducationResponse> UpdateAsync(int id, Education Education)
     {

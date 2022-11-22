@@ -33,6 +33,10 @@ public class DriverprofileRepository : BaseRepository, IDriverprofileRepository
             .Include(p => p.License)
             .FirstOrDefaultAsync(p => p.Id == DriverprofileId);
     }
+    public async Task<Driverprofile> FindByDriverIdAsync(int driverid)
+    {
+        return await _context.Driverprofiles.SingleOrDefaultAsync(x => x.DriverId == driverid);
+    }
     
     public void Update(Driverprofile Driverprofile)
     {
