@@ -19,4 +19,6 @@ public class RegisterRequest
     public string Role { get; set; }
     [Required]
     public string Description { get; set; }
+    [Required]
+    public string ImageUrl { get; set; }
 }

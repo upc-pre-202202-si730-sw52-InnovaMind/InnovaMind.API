@@ -4,11 +4,24 @@
     <projectFile profileName="IIS Express">InnovaMind.API/InnovaMind.API.csproj</projectFile>
     <projectFile profileName="InnovaMind.API">InnovaMind.API/InnovaMind.API.csproj</projectFile>
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="2edf81fb-5229-42eb-b337-f85d15ac5004" name="Changes" comment="feat(Services): Services required for apply for job">
       <change afterPath="$PROJECT_DIR$/.idea/.idea.InnovaMind.API/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InnovaMind.API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InnovaMind.API/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InnovaMind.API/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/InnovaMind.API/appsettings.json" afterDir="false" />
+=======
+    <list default="true" id="2edf81fb-5229-42eb-b337-f85d15ac5004" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.InnovaMind.API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InnovaMind.API/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InnovaMind.API/Security/Domain/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InnovaMind.API/Security/Domain/Models/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InnovaMind.API/Security/Domain/Services/Communication/RegisterRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InnovaMind.API/Security/Domain/Services/Communication/RegisterRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InnovaMind.API/Security/Domain/Services/Communication/UpdateRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InnovaMind.API/Security/Domain/Services/Communication/UpdateRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InnovaMind.API/Security/Resources/UserResource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InnovaMind.API/Security/Resources/UserResource.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InnovaMind.API/Shared/Persistence/Contexts/AppDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InnovaMind.API/Shared/Persistence/Contexts/AppDbContext.cs" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +44,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< Updated upstream
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
@@ -38,8 +52,20 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
+>>>>>>> Stashed changes
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.InnovaMind.API">
     <configuration name="InnovaMind.API" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/InnovaMind.API/InnovaMind.API.csproj" />
@@ -88,6 +114,7 @@
       <workItem from="1668216227051" duration="1505000" />
       <workItem from="1668271235092" duration="1978000" />
       <workItem from="1668273712398" duration="1377000" />
+<<<<<<< Updated upstream
       <workItem from="1668888370893" duration="7096000" />
       <workItem from="1668911971053" duration="96000" />
       <workItem from="1668952810847" duration="10530000" />
@@ -101,6 +128,9 @@
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
       <updated>1668969783779</updated>
+=======
+      <workItem from="1669142434216" duration="1215000" />
+>>>>>>> Stashed changes
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />

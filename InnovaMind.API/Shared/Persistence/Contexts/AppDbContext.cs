@@ -126,6 +126,7 @@ public class AppDbContext : DbContext
         builder.Entity<User>().Property(p => p.Role).IsRequired().HasMaxLength(10);
         builder.Entity<User>().Property(p => p.Phone).IsRequired();
         builder.Entity<User>().Property(p => p.Description);
+        builder.Entity<User>().Property(p => p.ImageUrl);
         
         //Messages
         builder.Entity<Message>().ToTable("Messages");
