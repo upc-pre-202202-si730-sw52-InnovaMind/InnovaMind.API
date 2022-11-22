@@ -15,5 +15,7 @@ public class CompanyResource
     [Required]
     [MaxLength(100)]
     public string Owner { get; set; }
+    [Required]
+    public int Imagen_url { get; set; }
     
 }
