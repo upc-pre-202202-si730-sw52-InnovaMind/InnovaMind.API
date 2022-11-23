@@ -48,17 +48,6 @@ public class NotificationService : INotificationService
         }
     }
     
-    public async Task<IEnumerable<Notification>> GetLastNotificationRecruiter(int id)
-    {
-        return await _notificationRepository.GetLastNotificationRecruiter(id);
-    }
-    
-    public async Task<IEnumerable<Notification>> GetLastNotificationDriver(int id)
-    {
-        return await _notificationRepository.GetLastNotificationDriver(id);
-    }
-
-
     public async Task<NotificationResponse> DeleteAsync(int id)
     {
         var existingNotification = await _notificationRepository.FindNotificationByIdAsync(id);

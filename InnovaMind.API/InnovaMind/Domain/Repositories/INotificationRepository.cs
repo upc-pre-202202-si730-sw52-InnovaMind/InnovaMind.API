@@ -6,11 +6,7 @@ public interface INotificationRepository
 {
     Task<IEnumerable<Notification>> GetNotificationsAsync();
     Task AddNotificationAsync(Notification notification);
-    Task<Notification> FindNotificationByIdAsync(int notificationId);
-
-    Task<IEnumerable<Notification>> GetLastNotificationRecruiter(int id);
-    Task<IEnumerable<Notification>> GetLastNotificationDriver(int id);
-    
+    Task<Notification> FindNotificationByIdAsync(int notificationId);    
     void Remove(Notification notification);
 
 }

@@ -28,23 +28,6 @@ public class NotificationController: ControllerBase
         resources = resources.Where(x => (x.Receiver.Id == userid) ).ToList();
         return resources;
     }
-    
-    [HttpGet("recruiters")]
-    public async Task<IEnumerable<NotificationResource>> GetLastNotificationRecruiter(int userid)
-    {
-        var notifications2 = await _notificationService.GetLastNotificationRecruiter(userid);
-        var resources2 = _mapper.Map<IEnumerable<Notification>, IEnumerable<NotificationResource>>(notifications2);
- 
-        return resources2;
-    }
-    
-    [HttpGet("drivers")]
-    public async Task<IEnumerable<NotificationResource>> GetLastNotificationDriver(int userid)
-    {
-        var notification3 = await _notificationService.GetLastNotificationDriver(userid);
-        var resources3 = _mapper.Map<IEnumerable<Notification>, IEnumerable<NotificationResource>>(notification3);
-        return resources3;
-    }
 
     [HttpPost("{id}")]
     public async Task<IActionResult> AddNotificationAsync([FromBody] SaveNotificationResource resource)

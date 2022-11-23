@@ -80,6 +80,8 @@ builder.Services.AddScoped<IAddressRepository, AddressRepository>();
 builder.Services.AddScoped<IAddressService, AddressService>();
 builder.Services.AddScoped<ISocialNetworkRepository, SocialNetworkRepository>();
 builder.Services.AddScoped<ISocialNetworkService, SocialNetworkService>();
+builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
+builder.Services.AddScoped<INotificationService, NotificationService>();
 // Security Injection Configuration
 
 builder.Services.AddScoped<IJwtHandler, JwtHandler>();

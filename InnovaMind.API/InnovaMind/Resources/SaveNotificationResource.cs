@@ -9,7 +9,7 @@ public class SaveNotificationResource
     public int EmitterId { get; set; }
     
     [Required]
-    public string ReceiverId { get; set; }
+    public int ReceiverId { get; set; }
     
     [Required]
     public string Content { get; set; }
