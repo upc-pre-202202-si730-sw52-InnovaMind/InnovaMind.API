@@ -2,6 +2,7 @@
 using InnovaMind.API.InnovaMind.Domain.Repositories;
 using InnovaMind.API.InnovaMind.Domain.Services;
 using InnovaMind.API.InnovaMind.Domain.Services.Communication;
+using InnovaMind.API.Security.Domain.Repositories;
 using InnovaMind.API.Shared.Domain.Repositories;
 
 namespace InnovaMind.API.InnovaMind.Services;
@@ -10,60 +11,46 @@ public class NotificationService : INotificationService
 {
     private readonly INotificationRepository _notificationRepository;
     private readonly IUnitOfWork _unitOfWork;
+    private readonly IUserRepository _userRepository;
     
-    public NotificationService(INotificationRepository notificationRepository, IUnitOfWork unitOfWork)
+    public NotificationService(INotificationRepository notificationRepository, IUnitOfWork unitOfWork, IUserRepository userRepository)
     {
         _notificationRepository = notificationRepository;
         _unitOfWork = unitOfWork;
+        _userRepository = userRepository;
     }
 
-    public async Task<IEnumerable<Notification>> ListAsync()
+    public async Task<IEnumerable<Notification>> GetNotificationsAsync()
     {
-        return await _notificationRepository.ListAsync();
+        return await _notificationRepository.GetNotificationsAsync();
     }
     
-    public async Task<NotificationResponse> SaveAsync(Notification notification)
+    public async Task<NotificationResponse> AddNotificationAsync(Notification notification)
     {
+        var existingUser = await _userRepository.FindByIdAsync(notification.EmitterId);
+
+        if (existingUser == null)
+            return new NotificationResponse("Invalid User");
+
         try
         {
-            await _notificationRepository.AddAsync(notification);
+            //Add Notification
+            await _notificationRepository.AddNotificationAsync(notification);
             await _unitOfWork.CompleteAsync();
-            
+
+            //Return response
             return new NotificationResponse(notification);
-        }
-        catch (Exception ex)
-        {
-            return new NotificationResponse($"An error occurred when saving the notification: {ex.Message}");
-        }
-    }
-    
-    public async Task<NotificationResponse> UpdateAsync(int id, Notification notification)
-    {
-        var existingNotification = await _notificationRepository.FindByIdAsync(id);
-        
-        if (existingNotification == null)
-            return new NotificationResponse("Notification not found.");
-        
-        existingNotification.Date = notification.Date;
-        existingNotification.Content = notification.Content;
-        existingNotification.UserId = notification.UserId;
-        
-        try
-        {
-            _notificationRepository.Update(existingNotification);
-            await _unitOfWork.CompleteAsync();
-            
-            return new NotificationResponse(existingNotification);
         }
         catch (Exception e)
         {
-            return new NotificationResponse($"An error occurred when updating the notification: {e.Message}");
+            //Error Handling
+            return new NotificationResponse($"An error ocurred while saving the tutorial: {e.Message}");
         }
     }
     
     public async Task<NotificationResponse> DeleteAsync(int id)
     {
-        var existingNotification = await _notificationRepository.FindByIdAsync(id);
+        var existingNotification = await _notificationRepository.FindNotificationByIdAsync(id);
         
         if (existingNotification == null)
             return new NotificationResponse("Notification not found.");
