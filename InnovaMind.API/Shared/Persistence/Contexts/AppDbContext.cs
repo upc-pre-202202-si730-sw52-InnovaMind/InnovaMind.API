@@ -62,11 +62,19 @@ public class AppDbContext : DbContext
         builder.Entity<Notification>().HasKey(p => p.Id);
         builder.Entity<Notification>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<Notification>().Property(p => p.Content).IsRequired();
-        builder.Entity<Notification>().Property(p => p.Date).IsRequired();
+        //Relations
         builder.Entity<Notification>()
-            .HasOne(p => p.User)
-            .WithMany(p => p.Notifications)
-            .HasForeignKey(p => p.UserId);
+            .HasOne(p => p.Emitter)
+            .WithMany(p => p.EmittedNotifications)
+            .HasForeignKey(p => p.EmitterId);
+        //.WithMany(p => p.ReceivedMessages)
+
+        builder.Entity<Notification>()
+            .HasOne(p => p.Receiver)
+            .WithMany(p => p.ReceivedNotifications)
+            .HasForeignKey(p => p.ReceiverId);
+        //.WithMany(p => p.EmittedMessages)
+       
         
        
         //Apply Snake Case Naming Convention

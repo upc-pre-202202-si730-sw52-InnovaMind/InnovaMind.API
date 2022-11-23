@@ -8,6 +8,10 @@ public class Notification
     public DateTime Date { get; set; }
     
     //Relationships
-    public int UserId { get; set; }
-    public User User { get; set; }
+    
+    public int EmitterId { get; set; }
+    public User Emitter { get; set; }
+    
+    public int ReceiverId { get; set; }
+    public User Receiver { get; set; }
 }

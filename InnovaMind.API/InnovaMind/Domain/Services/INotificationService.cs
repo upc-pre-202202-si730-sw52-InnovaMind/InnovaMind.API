@@ -5,9 +5,11 @@ namespace InnovaMind.API.InnovaMind.Domain.Services;
 
 public interface INotificationService
 {
-    Task<IEnumerable<Notification>> ListAsync();
-    Task<NotificationResponse> SaveAsync(Notification notification);
-    Task<NotificationResponse> UpdateAsync(int id, Notification notification);
-    Task<NotificationResponse> DeleteAsync(int id);
+    Task<IEnumerable<Notification>> GetNotificationsAsync();
+    Task<NotificationResponse> AddNotificationAsync(Notification notification);
+    Task<IEnumerable<Notification>> GetLastNotificationRecruiter(int id);
+    Task<IEnumerable<Notification>> GetLastNotificationDriver(int id);
     
+    Task<NotificationResponse> DeleteAsync(int id);
+
 }

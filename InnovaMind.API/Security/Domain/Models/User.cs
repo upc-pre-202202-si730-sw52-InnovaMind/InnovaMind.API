@@ -16,8 +16,14 @@ public class User
     [JsonIgnore]
     public string PasswordHash { get; set; }
 
+    [JsonIgnore]
     public IList<SocialNetwork> SocialNetworks { get; set; } = new List<SocialNetwork>();
     
+    [JsonIgnore]
     public IList<Address> Address { get; set; } = new List<Address>();
-    public IList<Notification> Notifications { get; set; }
+    [JsonIgnore]
+    public IList<Notification> EmittedNotifications { get; set; } = new List<Notification>();
+    
+    [JsonIgnore]
+    public IList<Notification> ReceivedNotifications { get; set; } = new List<Notification>();
 }

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace InnovaMind.API.InnovaMind.Controllers;
 
 [ApiController]
-[Route("api/v1/[controller]")]
+[Route("api/v1/{userid}/[controller]")]
 public class NotificationController: ControllerBase
 {
     private readonly INotificationService _notificationService;
@@ -21,45 +21,48 @@ public class NotificationController: ControllerBase
     }
     
     [HttpGet]
-    public async Task<IEnumerable<NotificationResource>> GetAllAsync()
+    public async Task<IEnumerable<NotificationResource>> GetAllNotificationsAsync(int userid)
     {
-        var notifications = await _notificationService.ListAsync();
+        var notifications = await _notificationService.GetNotificationsAsync();
         var resources = _mapper.Map<IEnumerable<Notification>, IEnumerable<NotificationResource>>(notifications);
+        resources = resources.Where(x => (x.Receiver.Id == userid) ).ToList();
         return resources;
     }
     
-    [HttpPost]
-    public async Task<IActionResult> PostAsync([FromBody] SaveNotificationResource resource)
+    [HttpGet("recruiters")]
+    public async Task<IEnumerable<NotificationResource>> GetLastNotificationRecruiter(int userid)
+    {
+        var notifications2 = await _notificationService.GetLastNotificationRecruiter(userid);
+        var resources2 = _mapper.Map<IEnumerable<Notification>, IEnumerable<NotificationResource>>(notifications2);
+ 
+        return resources2;
+    }
+    
+    [HttpGet("drivers")]
+    public async Task<IEnumerable<NotificationResource>> GetLastNotificationDriver(int userid)
+    {
+        var notification3 = await _notificationService.GetLastNotificationDriver(userid);
+        var resources3 = _mapper.Map<IEnumerable<Notification>, IEnumerable<NotificationResource>>(notification3);
+        return resources3;
+    }
+
+    [HttpPost("{id}")]
+    public async Task<IActionResult> AddNotificationAsync([FromBody] SaveNotificationResource resource)
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState.GetErrorMessages());
-        
+
         var notification = _mapper.Map<SaveNotificationResource, Notification>(resource);
-        var result = await _notificationService.SaveAsync(notification);
-        
+
+        var result = await _notificationService.AddNotificationAsync(notification);
+
         if (!result.Success)
             return BadRequest(result.Message);
-        
+
         var notificationResource = _mapper.Map<Notification, NotificationResource>(result.Resource);
+
         return Ok(notificationResource);
     }
-    
-    [HttpPut("{id}")]
-    public async Task<IActionResult> PutAsync(int id, [FromBody] SaveNotificationResource resource)
-    {
-        if (!ModelState.IsValid)
-            return BadRequest(ModelState.GetErrorMessages());
-        
-        var notification = _mapper.Map<SaveNotificationResource, Notification>(resource);
-        var result = await _notificationService.UpdateAsync(id, notification);
-        
-        if (!result.Success)
-            return BadRequest(result.Message);
-        
-        var notificationResource = _mapper.Map<Notification, NotificationResource>(result.Resource);
-        return Ok(notificationResource);
-    }
-    
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteAsync(int id)
     {
