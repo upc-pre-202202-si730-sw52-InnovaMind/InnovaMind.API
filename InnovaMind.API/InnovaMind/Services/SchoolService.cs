@@ -34,6 +34,16 @@ public class SchoolService : ISchoolService
             return new SchoolResponse($"An error ocurred while saving the social Network: {e.Message}");
         }
     }
+    public async Task<School> GetByEducationidAsync(int educationid)
+    {
+        var school = await _SchoolRepository.FindByEducationIdAsync(educationid);
+        //Validate
+        if (school == null )
+        {
+            throw new KeyNotFoundException("Driver not found");
+        }
+        return school;
+    }
 
     public async Task<SchoolResponse> UpdateAsync(int id, School School)
     {

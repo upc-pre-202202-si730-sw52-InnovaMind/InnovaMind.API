@@ -8,4 +8,5 @@ public interface ISchoolRepository
     Task<School> FindByIdAsync(int id);
     void Update(School school);
     void Remove(School school);
+    Task<School> FindByEducationIdAsync(int EducationId);
 }

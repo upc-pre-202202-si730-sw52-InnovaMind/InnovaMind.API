@@ -31,6 +31,10 @@ public class SchoolRepository : BaseRepository, ISchoolRepository
             .Include(p => p.Education)
             .FirstOrDefaultAsync(p => p.Id == SchoolId);
     }
+    public async Task<School> FindByEducationIdAsync(int educationid)
+    {
+        return await _context.Schools.SingleOrDefaultAsync(x => x.EducationId == educationid);
+    }
     
     public void Update(School School)
     {
