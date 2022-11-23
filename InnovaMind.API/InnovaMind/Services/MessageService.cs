@@ -46,6 +46,16 @@ public class MessageService : IMessageService
             return new MessageResponse($"An error ocurred while saving the tutorial: {e.Message}");
         }
     }
+
+    public async Task<IEnumerable<Message>> GetLastMessageRecruiter(int id)
+    {
+        return await _messageRepository.GetLastMessageRecruiter(id);
+    }
+    
+    public async Task<IEnumerable<Message>> GetLastMessageDriver(int id)
+    {
+        return await _messageRepository.GetLastMessageDriver(id);
+    }
 }
 
 

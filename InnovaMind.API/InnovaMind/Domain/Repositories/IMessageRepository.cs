@@ -9,5 +9,9 @@ namespace InnovaMind.API.InnovaMind.Domain.Repositories
         Task AddMessageAsync(Message message);
 
         Task<Message> FindMessageByIdAsync(int messageId);
+        
+        Task<IEnumerable<Message>> GetLastMessageRecruiter(int id);
+
+        Task<IEnumerable<Message>> GetLastMessageDriver(int id);
     }
 }

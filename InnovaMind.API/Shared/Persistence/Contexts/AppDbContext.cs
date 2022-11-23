@@ -136,12 +136,13 @@ public class AppDbContext : DbContext
         //Relations
         builder.Entity<Message>()
             .HasOne(p => p.Emitter)
-            .WithMany(p => p.ReceivedMessages)
+            .WithMany(p => p.EmittedMessages)
             .HasForeignKey(p => p.EmitterId);
+        //.WithMany(p => p.ReceivedMessages)
 
         builder.Entity<Message>()
             .HasOne(p => p.Receiver)
-            .WithMany(p => p.EmittedMessages)
+            .WithMany(p => p.ReceivedMessages)
             .HasForeignKey(p => p.ReceiverId); 
         
         // Companies
