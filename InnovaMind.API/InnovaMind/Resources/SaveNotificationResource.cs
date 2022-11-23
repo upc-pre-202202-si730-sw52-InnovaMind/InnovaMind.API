@@ -6,8 +6,11 @@ namespace InnovaMind.API.InnovaMind.Resources;
 public class SaveNotificationResource
 {
     [Required]
-    public int UserId { get; set; }
-    [MaxLength(250)]
-    public string Content { get; set; }
+    public int EmitterId { get; set; }
     
+    [Required]
+    public int ReceiverId { get; set; }
+    
+    [Required]
+    public string Content { get; set; }
 }

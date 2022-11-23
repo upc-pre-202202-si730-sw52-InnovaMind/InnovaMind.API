@@ -27,6 +27,13 @@ public class LicenseController : ControllerBase
         var resources = _mapper.Map<IEnumerable<License>, IEnumerable<LicenseResource>>(Licenses);
         return resources;
     }
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById (int id)
+    {
+        var user = await _LicenseService.GetByIdAsync(id);
+        var resource = _mapper.Map<License, LicenseResource>(user);
+        return Ok(resource);
+    }
 
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SaveLicenseResource resource)

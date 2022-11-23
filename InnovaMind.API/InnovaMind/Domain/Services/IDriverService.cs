@@ -9,4 +9,5 @@ public interface IDriverService
     Task<DriverResponse> SaveAsync(Driver Driver);
     Task<DriverResponse> UpdateAsync(int id, Driver Driver);
     Task<DriverResponse> DeleteAsync(int id);
+    Task<Driver> GetByUseridAsync(int userid);
 }

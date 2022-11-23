@@ -34,6 +34,19 @@ public class DriverprofileService : IDriverprofileService
             return new DriverprofileResponse($"An error ocurred while saving the social Network: {e.Message}");
         }
     }
+    public async Task<Driverprofile> GetByDriveridAsync(int driverid)
+    {
+        var driverprofile = await _DriverprofileRepository.FindByDriverIdAsync(driverid);
+
+
+        //Validate
+        if (driverprofile == null )
+        {
+            throw new KeyNotFoundException("Driver not found");
+        }
+
+        return driverprofile;
+    }
 
     public async Task<DriverprofileResponse> UpdateAsync(int id, Driverprofile Driverprofile)
     {

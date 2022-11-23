@@ -9,5 +9,6 @@ public class NotificationResource
     public DateTime date { get; set; }
     
     //Relationships
-    public User User { get; set; }
+    public User Emitter { get; set; }
+    public User Receiver { get; set; }
 }

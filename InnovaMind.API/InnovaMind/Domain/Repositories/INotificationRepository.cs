@@ -4,9 +4,9 @@ namespace InnovaMind.API.InnovaMind.Domain.Repositories;
 
 public interface INotificationRepository
 {
-    Task<IEnumerable<Notification>> ListAsync();
-    Task AddAsync(Notification notification);
-    Task<Notification> FindByIdAsync(int id);
-    void Update(Notification notification);
+    Task<IEnumerable<Notification>> GetNotificationsAsync();
+    Task AddNotificationAsync(Notification notification);
+    Task<Notification> FindNotificationByIdAsync(int notificationId);    
     void Remove(Notification notification);
+
 }

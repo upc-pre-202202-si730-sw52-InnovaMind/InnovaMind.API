@@ -46,7 +46,7 @@ public class UsersController : ControllerBase
         var resources = _mapper.Map<IEnumerable<User>, IEnumerable<UserResource>>(users);
         return Ok(resources);
     }
-
+    
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById (int id)
     {

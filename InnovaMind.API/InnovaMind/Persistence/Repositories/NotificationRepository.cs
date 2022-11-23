@@ -5,36 +5,35 @@ using InnovaMind.API.Shared.Persistence.Repositories;
 
 using Microsoft.EntityFrameworkCore;
 
-namespace InnovaMind.API.InnovaMind.Persistence.Repositories;
-
-public class NotificationRepository : BaseRepository, INotificationRepository
+namespace InnovaMind.API.InnovaMind.Persistence.Repositories
 {
-    public NotificationRepository(AppDbContext context) : base(context)
-    {
-        
-    }
 
-    public async Task<IEnumerable<Notification>> ListAsync()
+    public class NotificationRepository : BaseRepository, INotificationRepository
     {
-        return await _context.Notifications.Include(p => p.User).ToListAsync();
-    }
-    
-    public async Task AddAsync(Notification notification)
-    {
-        await _context.Notifications.AddAsync(notification);
-    }
-    
-    public async Task<Notification> FindByIdAsync(int id)
-    {
-        return await _context.Notifications.Include(p => p.User).FirstOrDefaultAsync(p => p.Id == id);
-    }
-    
-    public void Update(Notification notification)
-    {
-        _context.Notifications.Update(notification);
-    }
-    public void Remove(Notification notification)
-    {
-        _context.Notifications.Remove(notification);
+        public NotificationRepository(AppDbContext context) : base(context)
+        {
+
+        }
+
+        public async Task<IEnumerable<Notification>> GetNotificationsAsync()
+        {
+            return await _context.Notifications.Include(p => p.Emitter).Include(q => q.Receiver).ToListAsync();
+        }
+
+        public async Task AddNotificationAsync(Notification notification)
+        {
+            await _context.Notifications.AddAsync(notification);
+        }
+
+        public async Task<Notification> FindNotificationByIdAsync(int id)
+        {
+            return await _context.Notifications.FindAsync(id);
+        }
+               
+        public void Remove(Notification notification)
+        {
+            _context.Notifications.Remove(notification);
+        }
+
     }
 }

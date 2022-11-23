@@ -44,6 +44,12 @@ public class SchoolController : ControllerBase
 
         return Ok(School);
     }
+    [HttpGet("educationid/{educationid}")]
+    public async Task<IActionResult> GetByEducationid(int educationid)
+    {
+        var response = await _SchoolService.GetByEducationidAsync(educationid);
+        return Ok(response);
+    }
 
     [HttpPut("{id}")]
     public async Task<IActionResult> PutAsync(int id, [FromBody] SaveSchoolResource resource)

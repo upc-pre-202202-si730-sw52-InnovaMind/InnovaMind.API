@@ -9,4 +9,5 @@ public interface IEducationService
     Task<EducationResponse> SaveAsync(Education Education);
     Task<EducationResponse> UpdateAsync(int userId, Education Education);
     Task<EducationResponse> DeleteAsync(int userId);
+    Task<Education> GetByDriverprofileidAsync(int driverprofileid);
 }

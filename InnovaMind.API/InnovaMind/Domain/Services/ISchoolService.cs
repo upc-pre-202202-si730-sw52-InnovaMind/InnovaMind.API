@@ -9,4 +9,5 @@ public interface ISchoolService
     Task<SchoolResponse> SaveAsync(School School);
     Task<SchoolResponse> UpdateAsync(int userId, School School);
     Task<SchoolResponse> DeleteAsync(int userId);
+    Task<School> GetByEducationidAsync(int educationid);
 }

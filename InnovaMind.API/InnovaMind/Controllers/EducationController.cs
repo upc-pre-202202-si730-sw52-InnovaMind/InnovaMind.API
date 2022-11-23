@@ -27,6 +27,12 @@ public class EducationController : ControllerBase
         var resources = _mapper.Map<IEnumerable<Education>, IEnumerable<EducationResource>>(Educations);
         return resources;
     }
+    [HttpGet("driverprofileid/{driverprofileid}")]
+    public async Task<IActionResult> GetByDriverprofileidid(int driverprofileid)
+    {
+        var response = await _EducationService.GetByDriverprofileidAsync(driverprofileid);
+        return Ok(response);
+    }
 
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SaveEducationResource resource)
