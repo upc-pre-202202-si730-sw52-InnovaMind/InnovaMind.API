@@ -1,21 +1,12 @@
-using System.ComponentModel.DataAnnotations;
+using InnovaMind.API.InnovaMind.Domain.Models;
 
 namespace InnovaMind.API.InnovaMind.Resources;
 
-public class CompanyResource
+public class SaveCompanyResource
 {
-    [Required]
     public int Id { get; set; }
-    [Required]
-    [MaxLength(100)]
     public string Name { get; set; }
-    [Required]
-    [MaxLength(11)]
     public string RUC { get; set; }
-    [Required]
-    [MaxLength(100)]
     public string Owner { get; set; }
-    [Required]
-    public int Imagen_url { get; set; }
-    
+    public string Imagen_url { get; set; }
 }
