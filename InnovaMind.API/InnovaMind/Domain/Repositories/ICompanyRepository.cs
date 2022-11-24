@@ -9,4 +9,6 @@ public interface ICompanyRepository
     Task<Company> FindByIdAsync(int id);
     void Update(Company company);
     void Remove(Company company);
+    Company FindById(int id);
+    
 }

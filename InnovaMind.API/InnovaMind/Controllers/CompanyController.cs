@@ -27,6 +27,13 @@ public class CompanyController : ControllerBase
         var resources = _mapper.Map<IEnumerable<Company>, IEnumerable<CompanyResource>>(companies);
         return resources;
     }
+    [HttpGet("id/{id}")]
+    public async Task<IActionResult> GetById (int id)
+    {
+        var result = await _companyService.GetByIdAsync(id);
+        var resource = _mapper.Map<Company, CompanyResource>(result);
+        return Ok(resource); 
+    }
     
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SaveCompanyResource resource)
@@ -41,7 +48,7 @@ public class CompanyController : ControllerBase
         if (!result.Success)
             return BadRequest(result.Message);
         
-        var companyResource = _mapper.Map<Company, CompanyResource>(result.Resource);
+        var companyResource = _mapper.Map<Company, SaveCompanyResource>(result.Resource);
         return Ok(companyResource);
     }
     

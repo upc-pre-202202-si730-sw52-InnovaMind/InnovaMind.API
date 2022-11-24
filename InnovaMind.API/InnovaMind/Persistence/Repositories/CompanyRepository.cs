@@ -22,11 +22,13 @@ public class CompanyRepository : BaseRepository, ICompanyRepository
     {
         await _context.Companies.AddAsync(company);
     }
-
-    public async Task<Company> FindByIdAsync(int id)
+    public async Task<Company> FindByIdAsync(int Id)
     {
-        return await _context.Companies.FindAsync(id);
+        return await _context.Companies
+            .FirstOrDefaultAsync(p => p.Id == Id);
     }
+
+    
 
     public void Update(Company company)
     {
@@ -36,5 +38,10 @@ public class CompanyRepository : BaseRepository, ICompanyRepository
     public void Remove(Company company)
     {
         _context.Companies.Remove(company);
+    }
+
+    public Company FindById(int id)
+    {
+        return _context.Companies.Find(id);
     }
 }

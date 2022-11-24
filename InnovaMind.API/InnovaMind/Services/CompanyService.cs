@@ -21,6 +21,12 @@ public class CompanyService : ICompanyService
     {
         return await _companyRepository.ListAsync();
     }
+    public async Task<Company> GetByIdAsync(int id)
+    {
+        var company = await _companyRepository.FindByIdAsync(id);
+        if (company == null) throw new KeyNotFoundException("Driver not found");
+        return company;
+    }
 
     public async Task<Company> FindByIdAsync(int id)
     {

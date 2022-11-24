@@ -10,4 +10,6 @@ public interface ICompanyService
     Task<CompanyResponse> SaveAsync(Company company);
     Task<CompanyResponse> UpdateAsync(int id, Company company);
     Task<CompanyResponse> DeleteAsync(int id);
+    Task<Company> GetByIdAsync(int id);
+
 }
