@@ -9,4 +9,6 @@ public interface IRecruiterService
     Task<RecruiterResponse> SaveAsync(Recruiter recruiter);
     Task<RecruiterResponse> UpdateAsync(int id, Recruiter recruiter);
     Task<RecruiterResponse> DeleteAsync(int id);
+    Task<Recruiter> GetByIdAsync(int id);
+    Task<Recruiter> GetByUseridAsync(int userid);
 }

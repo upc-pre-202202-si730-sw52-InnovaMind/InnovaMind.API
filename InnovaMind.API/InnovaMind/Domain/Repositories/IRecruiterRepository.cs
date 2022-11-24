@@ -9,4 +9,6 @@ public interface IRecruiterRepository
     Task<Recruiter> FindByIdAsync(int id);
     void Update(Recruiter recruiter);
     void Remove(Recruiter recruiter);
+    Recruiter FindById(int id);
+    Task<Recruiter> FindByUserIdAsync(int UserId);
 }

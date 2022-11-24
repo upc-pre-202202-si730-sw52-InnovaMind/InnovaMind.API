@@ -34,6 +34,12 @@ public class RecruiterService : IRecruiterService
             return new RecruiterResponse($"An error occurred when saving the recruiter: {e.Message}");
         }
     }
+    public async Task<Recruiter> GetByIdAsync(int id)
+    {
+        var driver = await _recruiterRepository.FindByIdAsync(id);
+        if (driver == null) throw new KeyNotFoundException("Driver not found");
+        return driver;
+    }
 
     public async Task<RecruiterResponse> UpdateAsync(int id, Recruiter recruiter)
     {
@@ -52,6 +58,16 @@ public class RecruiterService : IRecruiterService
         {
             return new RecruiterResponse($"An error occurred when updating the recruiter: {e.Message}");
         }
+    }
+    public async Task<Recruiter> GetByUseridAsync(int userid)
+    {
+        var recruiter = await _recruiterRepository.FindByUserIdAsync(userid);
+        //Validate
+        if (recruiter == null )
+        {
+            throw new KeyNotFoundException("Driver not found");
+        }
+        return recruiter;
     }
 
     public async Task<RecruiterResponse> DeleteAsync(int id)

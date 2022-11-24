@@ -20,18 +20,25 @@ public class RecruiterRepository : BaseRepository, IRecruiterRepository
             .Include(p => p.User)
             .ToListAsync();
     }
+    public async Task<Recruiter> FindByIdAsync(int Id)
+    {
+        return await _context.Recruiters
+            .FirstOrDefaultAsync(p => p.Id == Id);
+    }
+    public Recruiter FindById(int id)
+    {
+        return _context.Recruiters.Find(id);
+    }
+    public async Task<Recruiter> FindByUserIdAsync(int userid)
+    {
+        return await _context.Recruiters.SingleOrDefaultAsync(x => x.UserId == userid);
+    }
 
     public async Task AddAsync(Recruiter recruiter)
     {
         await _context.Recruiters.AddAsync(recruiter);
     }
-
-    public async Task<Recruiter> FindByIdAsync(int id)
-    {
-        return await _context.Recruiters
-            .Include(p => p.User)
-            .FirstOrDefaultAsync(p => p.Id == id);
-    }
+    
 
     public void Update(Recruiter recruiter)
     {

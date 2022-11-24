@@ -27,7 +27,19 @@ public class RecruiterController : ControllerBase
         var resources = _mapper.Map<IEnumerable<Recruiter>, IEnumerable<RecruiterResource>>(recruiters);
         return resources;
     }
-    
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById (int id)
+    {
+        var user = await _recruiterService.GetByIdAsync(id);
+        var resource = _mapper.Map<Recruiter, RecruiterResource>(user);
+        return Ok(resource);
+    }
+    [HttpGet("userid/{userid}")]
+    public async Task<IActionResult> GetByUserid(int userid)
+    {
+        var response = await _recruiterService.GetByUseridAsync(userid);
+        return Ok(response);
+    }
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SaveRecruiterResource resource)
     {
