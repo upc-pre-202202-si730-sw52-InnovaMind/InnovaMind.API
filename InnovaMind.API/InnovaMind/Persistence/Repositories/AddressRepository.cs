@@ -15,7 +15,9 @@ public class AddressRepository : BaseRepository, IAddressRepository
 
     public async Task<IEnumerable<Address>> ListAsync()
     {
-        return await _context.Address.ToListAsync();
+        return await _context.Address
+            .Include(p => p.User)
+            .ToListAsync();
     }
 
     public async Task AddAsync(Address address)
