@@ -16,4 +16,17 @@ public class SavePostResource
     
     [Required]
     public DateTime date { get; set; }
+    [Required]
+    public string Amount { get; set; }
+
+    [Required] 
+    public string Category { get; set; }
+
+    [Required]
+    public string location { get; set; }
+    
+    [Required]
+    public int Time { get; set; }
+    [Required]
+    public string ImagenURL { get; set; }
 }

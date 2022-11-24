@@ -175,6 +175,11 @@ public class AppDbContext : DbContext
         builder.Entity<Post>().Property(p => p.Title).IsRequired(); 
         builder.Entity<Post>().Property(p => p.Description).IsRequired();
         builder.Entity<Post>().Property(p => p.date).IsRequired();
+        builder.Entity<Post>().Property(p => p.Amount).IsRequired();
+        builder.Entity<Post>().Property(p => p.location).IsRequired();
+        builder.Entity<Post>().Property(p => p.Category).IsRequired();
+        builder.Entity<Post>().Property(p => p.Time).IsRequired();
+        builder.Entity<Post>().Property(p => p.ImagenURL).IsRequired();
         // Relationsships
         builder.Entity<Post>()
             .HasOne(p => p.Recruiter)
